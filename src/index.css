@@ -33,15 +33,21 @@ main h1 {
   position: fixed;
   top: 0;
   left: 0;
+  width: 0;
+  overflow: auto;
+  transition: all 0.25s ease-in-out;
+}
+
+.sideBar.active {
   padding: 2rem;
+  width: 300px;
   background-color: #008b8b;
 }
 
 .links {
-  width: 200px;
   height: 100vh;
   display: flex;
-  gap: 100px;
+  gap: 50px;
   flex-direction: column;
   justify-content: center;
   list-style: none;
@@ -57,6 +63,10 @@ main h1 {
 }
 
 .menu {
+  cursor: pointer;
+  position: fixed;
+  top: 2rem;
+  left: 2rem;
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -64,8 +74,22 @@ main h1 {
 
 .menu span {
   height: 3px;
-  width: 30px;
-  background-color: #333;
+  width: 25px;
+  background-color: #008b8b;
+  transform-origin: right;
+  transition: all 0.25s ease-in-out;
+}
+
+.active .menu span:first-child {
+  transform: rotate(-40deg);
+  background-color: #fff;
+}
+.active .menu span:nth-child(2) {
+  opacity: 0;
+}
+.active .menu span:last-child {
+  transform: rotate(40deg);
+  background-color: #fff;
 }
 
 .todoInput,
@@ -90,6 +114,10 @@ main h1 {
 
 .todoItem {
   margin-top: 10px;
+}
+
+.todoItem .check {
+  margin-right: 10px;
 }
 
 .todoItem div {

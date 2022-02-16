@@ -1,9 +1,15 @@
-const TodoItem = () => {
+const TodoItem = ({ data }) => {
   return (
     <div className="todoItem">
       <div>
-        <input type="checkbox" />
-        <input className="input" type="text" required readOnly />
+        <input className="check" type="checkbox" value={data.completed} />
+        <input
+          className="input"
+          type="text"
+          required
+          readOnly
+          value={data.description}
+        />
       </div>
       <svg viewBox="0 0 24 24">
         <path

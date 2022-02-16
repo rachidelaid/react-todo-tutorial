@@ -1,7 +1,24 @@
-const TodoInput = () => {
+import { useState } from 'react';
+
+const TodoInput = ({ addTodos }) => {
+  const [description, setDescription] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    addTodos({ id: Date.now(), description, completed: false });
+    setDescription('');
+  };
+
   return (
-    <form className="todoInput">
-      <input className="input" type="text" required />
+    <form className="todoInput" onSubmit={handleSubmit}>
+      <input
+        className="input"
+        type="text"
+        required
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+      />
       <button type="submit">
         <svg viewBox="0 0 24 24">
           <path
