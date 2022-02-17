@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 const Todo = () => {
   const [todos, setTodos] = useState(
-    localStorage.getItem('todos')
+    JSON.parse(localStorage.getItem('todos'))
       ? JSON.parse(localStorage.getItem('todos'))
       : [],
   );
@@ -21,13 +21,28 @@ const Todo = () => {
     setTodos(arr);
   };
 
+  const updateTodo = (todo) => {
+    const arr = todos.map((t) => {
+      if (t.id === todo.id) return todo;
+      return t;
+    });
+    console.log(arr, todo);
+    localStorage.setItem('todos', JSON.stringify(arr));
+    setTodos(arr);
+  };
+
   return (
     <main>
       <SideBar />
       <h1>Todos</h1>
       <TodoInput addTodos={addTodos} />
       {todos.map((x, i) => (
-        <TodoItem data={x} key={i} deleteTodo={deleteTodo} />
+        <TodoItem
+          data={x}
+          key={i}
+          deleteTodo={deleteTodo}
+          updateTodo={updateTodo}
+        />
       ))}
     </main>
   );

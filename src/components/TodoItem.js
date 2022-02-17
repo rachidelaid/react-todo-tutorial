@@ -1,18 +1,51 @@
-const TodoItem = ({ data, deleteTodo }) => {
+const TodoItem = ({ data, deleteTodo, updateTodo }) => {
   const handleDelete = () => {
     deleteTodo(data.id);
+  };
+
+  const handleUpdate = (e) => {
+    if (e.target.className === 'check') {
+      const todo = {
+        ...data,
+        completed: e.target.checked,
+      };
+      updateTodo(todo);
+    } else {
+      const todo = {
+        ...data,
+        description: e.target.value.trim(),
+      };
+      updateTodo(todo);
+    }
+  };
+
+  const handleDoubleClick = (e) => {
+    e.target.readOnly = false;
+    e.target.focus();
+  };
+
+  const handleBlur = (e) => {
+    e.target.readOnly = true;
   };
 
   return (
     <div className="todoItem">
       <div>
-        <input className="check" type="checkbox" value={data.completed} />
+        <input
+          className="check"
+          type="checkbox"
+          checked={data.completed}
+          onChange={handleUpdate}
+        />
         <input
           className="input"
           type="text"
           required
           readOnly
           value={data.description}
+          onDoubleClick={handleDoubleClick}
+          onBlur={handleBlur}
+          onChange={handleUpdate}
         />
       </div>
       <svg viewBox="0 0 24 24" onClick={handleDelete}>
