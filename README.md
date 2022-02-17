@@ -8,8 +8,8 @@ this a todo-list app built using react following the [ibaslogic](https://ibaslog
 
 - add to by clicking the add button or by pressing enter.
 - marking the task as completed by checking the box next to it.
-- updating the task description buy double clicking it.
-- deleting a task by click the trash icon next to it.
+- updating the task description by double-clicking it.
+- deleting a task by clicking the trash icon next to it.
 - all the data is saved in local storage.
 - added a side bar to access the other routes.
 
