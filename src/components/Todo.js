@@ -15,13 +15,19 @@ const Todo = () => {
     setTodos([...todos, todo]);
   };
 
+  const deleteTodo = (id) => {
+    const arr = todos.filter((t) => t.id !== id);
+    localStorage.setItem('todos', JSON.stringify(arr));
+    setTodos(arr);
+  };
+
   return (
     <main>
       <SideBar />
       <h1>Todos</h1>
       <TodoInput addTodos={addTodos} />
       {todos.map((x, i) => (
-        <TodoItem data={x} key={i} />
+        <TodoItem data={x} key={i} deleteTodo={deleteTodo} />
       ))}
     </main>
   );
