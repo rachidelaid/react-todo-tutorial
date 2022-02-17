@@ -15,6 +15,7 @@ body {
 svg {
   width: 24px;
   height: 24px;
+  cursor: pointer;
 }
 
 main {
@@ -110,6 +111,10 @@ main h1 {
   padding: 0.5rem;
 }
 
+.todoInput svg:hover {
+  color: green;
+}
+
 .todoItem {
   display: flex;
   justify-content: space-between;
@@ -117,19 +122,19 @@ main h1 {
   border: none;
   border-radius: 0;
   border-bottom: #333 1px solid;
-}
-
-.todoItem {
   margin-top: 10px;
-}
-
-.todoItem .check {
-  margin-right: 10px;
+  gap: 10px;
 }
 
 .todoItem div {
+  width: 100%;
   display: flex;
   align-items: center;
+  gap: 10px;
+}
+
+.todoItem svg:hover {
+  color: red;
 }
 
 .input {
@@ -147,5 +152,11 @@ main h1 {
 
 .about-app,
 .about-author {
-  padding: 5rem;
+  padding: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
 }
