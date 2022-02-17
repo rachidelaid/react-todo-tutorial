@@ -1,3 +1,5 @@
+import { NavLink } from 'react-router-dom';
+
 import { useState } from 'react';
 
 const SideBar = () => {
@@ -15,9 +17,30 @@ const SideBar = () => {
         <span></span>
       </div>
       <ul className="links">
-        <li>Home</li>
-        <li>About App</li>
-        <li>About Author</li>
+        <li>
+          <NavLink
+            className={({ isActive }) => (isActive ? 'active' : '')}
+            to="/"
+          >
+            Todo
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            className={({ isActive }) => (isActive ? 'active' : '')}
+            to="/about-app"
+          >
+            About App
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            className={({ isActive }) => (isActive ? 'active' : '')}
+            to="/about-author"
+          >
+            About Author
+          </NavLink>
+        </li>
       </ul>
     </div>
   );
